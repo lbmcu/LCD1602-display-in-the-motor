@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   123                                                               07/31/2019 10:20:15 PAGE 1   
+C51 COMPILER V9.60.0.0   123                                                               07/31/2019 15:38:11 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE 123
@@ -42,116 +42,102 @@ line level    source
   32   1          UartInit();
   33   1          while(1)
   34   1          {
-  35   2             if(flag == 0)
-  36   2              {
-  37   3                led = 0;
-  38   3                
-  39   3                forward(speed);
-  40   3                
-  41   3                if(speed == 1)
-  42   3                {
-  43   4                 LCD_display("Mo Dir: Goto","Mo Spd: Fast ^_^");
-  44   4                }
-  45   3                
-  46   3                else if(speed == 3)
-  47   3                {
-  48   4                 LCD_display("Mo Dir: Goto","Mo Spd: Norl ^_^");
-  49   4                }
-  50   3                
-  51   3                else if(speed == 5)
-  52   3                {
-  53   4                 LCD_display("Mo Dir: Goto","Mo Spd: Slow ^_^");
-  54   4                }
-C51 COMPILER V9.60.0.0   123                                                               07/31/2019 10:20:15 PAGE 2   
+  35   2            panduan();
+  36   2          }
+  37   1      }
+  38          
+  39          void panduan()
+  40          {
+  41   1        if(flag == 0)   //判断正转
+  42   1        {
+  43   2          led = 0;  //状态灯灭
+  44   2                
+  45   2          forward(speed);   //电机执行正转且返回速度送给下面进行判断
+  46   2                
+  47   2          if(speed == 1)      //如果为1 则速度显示为快速
+  48   2          {
+  49   3            LCD_display("Mo Dir: Goto","Mo Spd: Fast ^_^");
+  50   3          }
+  51   2                
+  52   2          else if(speed == 3)   //如果为3 则速度显示为中速
+  53   2          {
+  54   3            LCD_display("Mo Dir: Goto","Mo Spd: Norl ^_^");
+C51 COMPILER V9.60.0.0   123                                                               07/31/2019 15:38:11 PAGE 2   
 
-  55   3      //          switch(speed)   //switch无法实现不知道为什么，知道的大佬求解释
-  56   3      //          {
-  57   3      //        case'1':
-  58   3      //          LCD_display("Mo Dir: Goto","Mo Spd: Fast ^_^");
-  59   3      //        case'2':
-  60   3      //          LCD_display("Mo Dir: Goto","Mo Spd: Norl ^_^");
-  61   3      //        case'3':
-  62   3      //          LCD_display("Mo Dir: Goto","Mo Spd: Slow ^_^");
-  63   3      //          }
-  64   3              }
-  65   2      
-  66   2      
-  67   2             if(flag == 1)
-  68   2              {
-  69   3                led = 1;
-  70   3                back(speed);
-  71   3                if(speed == 1)
-  72   3                {
-  73   4                 LCD_display("Mo Dir: Back","Mo Spd: Fast ^_^");
-  74   4                }
-  75   3                else if(speed == 3)
-  76   3                {
-  77   4                 LCD_display("Mo Dir: Back","Mo Spd: Norl ^_^");
-  78   4                }
-  79   3                else if(speed == 5)
-  80   3                {
-  81   4                 LCD_display("Mo Dir: Back","Mo Spd: Slow ^_^");
-  82   4                }
-  83   3      //        switch(speed)
-  84   3      //          {
-  85   3      //        case'1':
-  86   3      //          LCD_display("Mo Dir: Back","Mo Spd: Fast ^_^");
-  87   3      //        break;
-  88   3      //        case'2':
-  89   3      //          LCD_display("Mo Dir: Back","Mo Spd: Norl ^_^");
-  90   3      //        break;
-  91   3      //        case'3':
-  92   3      //          LCD_display("Mo Dir: Back","Mo Spd: Slow ^_^");
-  93   3      //        break;
-  94   3      //          }
-  95   3              }
-  96   2      
-  97   2          }
-  98   1      }
-  99          
- 100          void Usart() interrupt 4
- 101          {
- 102   1          uchar n; //定义临时变量
- 103   1      //  led = 1;
- 104   1          if(RI) //判断是接收中断产生
- 105   1          {
- 106   2              RI = 0; //标志位清零
- 107   2              n = SBUF; //读入缓冲区的值
- 108   2              switch(n)
- 109   2              {
- 110   3              case'0':    //控制正转
- 111   3                flag = 0;
- 112   3               break;
- 113   3              
- 114   3              case'1':    //控制反转
- 115   3                flag = 1;
- 116   3               break;
-C51 COMPILER V9.60.0.0   123                                                               07/31/2019 10:20:15 PAGE 3   
+  55   3          }
+  56   2                
+  57   2          else if(speed == 5)   //如果为5 则速度显示为慢速
+  58   2          {
+  59   3            LCD_display("Mo Dir: Goto","Mo Spd: Slow ^_^");
+  60   3          }
+  61   2        }
+  62   1      
+  63   1      
+  64   1        if(flag == 1)     //判断反转
+  65   1        {
+  66   2            led = 1;      //状态灯亮
+  67   2                
+  68   2          back(speed);
+  69   2            
+  70   2          if(speed == 1)      //电机执行正转且返回速度送给下面进行判断
+  71   2          {
+  72   3            LCD_display("Mo Dir: Back","Mo Spd: Fast ^_^");
+  73   3          }
+  74   2          else if(speed == 3)
+  75   2          {
+  76   3            LCD_display("Mo Dir: Back","Mo Spd: Norl ^_^");
+  77   3          }
+  78   2          else if(speed == 5)
+  79   2          {
+  80   3            LCD_display("Mo Dir: Back","Mo Spd: Slow ^_^");
+  81   3          }
+  82   2        }
+  83   1      }
+  84          
+  85          
+  86          void Usart() interrupt 4
+  87          {
+  88   1          uchar n; //定义临时变量
+  89   1      //  led = 1;
+  90   1          if(RI) //判断是接收中断产生
+  91   1          {
+  92   2              RI = 0; //标志位清零
+  93   2              n = SBUF; //读入缓冲区的值
+  94   2              switch(n)
+  95   2              {
+  96   3              case'0':    //控制正转
+  97   3                flag = 0;
+  98   3               break;
+  99   3              
+ 100   3              case'1':    //控制反转
+ 101   3                flag = 1;
+ 102   3               break;
+ 103   3              
+ 104   3              case'2':    //控制速度为慢
+ 105   3                speed = 5;
+ 106   3              break;
+ 107   3              
+ 108   3              case'3':    //控制速度为中等
+ 109   3                speed = 3;
+ 110   3              break;
+ 111   3              
+ 112   3              case'4':    //控制速度为快
+ 113   3                speed = 1;
+ 114   3              break;
+ 115   3              
+ 116   3              }
+C51 COMPILER V9.60.0.0   123                                                               07/31/2019 15:38:11 PAGE 3   
 
- 117   3              
- 118   3              case'2':    //控制速度为慢
- 119   3                speed = 5;
- 120   3              break;
- 121   3              
- 122   3              case'3':    //控制速度为中等
- 123   3                speed = 3;
- 124   3              break;
- 125   3              
- 126   3              case'4':    //控制速度为快
- 127   3                speed = 1;
- 128   3              break;
- 129   3              
- 130   3              }
- 131   2              TI = 1;
- 132   2              SBUF = n; //把接收到的值再发回
- 133   2          }
- 134   1          if(TI) //如果是发送标志位，清零
- 135   1              TI = 0;
- 136   1      }
+ 117   2              TI = 1;
+ 118   2              SBUF = n; //把接收到的值再发回
+ 119   2          }
+ 120   1          if(TI) //如果是发送标志位，清零
+ 121   1              TI = 0;
+ 122   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    257    ----
+   CODE SIZE        =    247    ----
    CONSTANT SIZE    =     77    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

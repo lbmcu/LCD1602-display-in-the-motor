@@ -32,70 +32,56 @@ main()
     UartInit();
     while(1)
     {
-       if(flag == 0)
-        {
-					led = 0;
-					
-					forward(speed);
-					
-					if(speed == 1)
-					{
-					 LCD_display("Mo Dir: Goto","Mo Spd: Fast ^_^");
-					}
-					
-					else if(speed == 3)
-					{
-					 LCD_display("Mo Dir: Goto","Mo Spd: Norl ^_^");
-					}
-					
-					else if(speed == 5)
-					{
-					 LCD_display("Mo Dir: Goto","Mo Spd: Slow ^_^");
-					}
-//					switch(speed)		//switch无法实现不知道为什么，知道的大佬求解释
-//					{
-//				case'1':
-//					LCD_display("Mo Dir: Goto","Mo Spd: Fast ^_^");
-//				case'2':
-//					LCD_display("Mo Dir: Goto","Mo Spd: Norl ^_^");
-//				case'3':
-//					LCD_display("Mo Dir: Goto","Mo Spd: Slow ^_^");
-//					}
-        }
-
-
-       if(flag == 1)
-        {
-          led = 1;
-					back(speed);
-					if(speed == 1)
-					{
-					 LCD_display("Mo Dir: Back","Mo Spd: Fast ^_^");
-					}
-					else if(speed == 3)
-					{
-					 LCD_display("Mo Dir: Back","Mo Spd: Norl ^_^");
-					}
-					else if(speed == 5)
-					{
-					 LCD_display("Mo Dir: Back","Mo Spd: Slow ^_^");
-					}
-//				switch(speed)
-//					{
-//				case'1':
-//					LCD_display("Mo Dir: Back","Mo Spd: Fast ^_^");
-//				break;
-//				case'2':
-//					LCD_display("Mo Dir: Back","Mo Spd: Norl ^_^");
-//				break;
-//				case'3':
-//					LCD_display("Mo Dir: Back","Mo Spd: Slow ^_^");
-//				break;
-//					}
-        }
-
-    }
+			panduan();
+		}
 }
+
+void panduan()
+{
+	if(flag == 0)		//判断正转
+	{
+		led = 0;	//状态灯灭
+					
+		forward(speed);		//电机执行正转且返回速度送给下面进行判断
+					
+		if(speed == 1)			//如果为1	则速度显示为快速
+		{
+			LCD_display("Mo Dir: Goto","Mo Spd: Fast ^_^");
+		}
+					
+		else if(speed == 3)		//如果为3	则速度显示为中速
+		{
+			LCD_display("Mo Dir: Goto","Mo Spd: Norl ^_^");
+		}
+					
+		else if(speed == 5)		//如果为5	则速度显示为慢速
+		{
+			LCD_display("Mo Dir: Goto","Mo Spd: Slow ^_^");
+		}
+	}
+
+
+	if(flag == 1)			//判断反转
+	{
+  	  led = 1;			//状态灯亮
+          
+		back(speed);
+		  
+		if(speed == 1)			//电机执行正转且返回速度送给下面进行判断
+		{
+			LCD_display("Mo Dir: Back","Mo Spd: Fast ^_^");
+		}
+		else if(speed == 3)
+		{
+		 	LCD_display("Mo Dir: Back","Mo Spd: Norl ^_^");
+		}
+		else if(speed == 5)
+		{
+		 	LCD_display("Mo Dir: Back","Mo Spd: Slow ^_^");
+		}
+	}
+}
+
 
 void Usart() interrupt 4
 {

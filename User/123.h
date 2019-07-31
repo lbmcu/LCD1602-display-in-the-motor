@@ -24,4 +24,6 @@ sbit led = P3 ^ 7;
 bit flag;
 static speed = 1;
 
+void panduan();
+
 #endif

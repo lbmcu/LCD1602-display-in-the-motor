@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   LCD                                                               07/30/2019 09:48:34 PAGE 1   
+C51 COMPILER V9.60.0.0   LCD                                                               07/31/2019 15:38:11 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE LCD
@@ -62,7 +62,7 @@ line level    source
   52   1          E = 0;
   53   1          delay3();
   54   1          P0 = del;
-C51 COMPILER V9.60.0.0   LCD                                                               07/30/2019 09:48:34 PAGE 2   
+C51 COMPILER V9.60.0.0   LCD                                                               07/31/2019 15:38:11 PAGE 2   
 
   55   1          delay3();
   56   1          E = 1;
@@ -126,7 +126,7 @@ line level    source
  114   1          while(1)
  115   1          {
  116   2              wcmd(a++);
-C51 COMPILER V9.60.0.0   LCD                                                               07/30/2019 09:48:34 PAGE 3   
+C51 COMPILER V9.60.0.0   LCD                                                               07/31/2019 15:38:11 PAGE 3   
 
  117   2              if((*p == '\0') || (b == 16)) break;
  118   2              b++;
