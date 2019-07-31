@@ -1,0 +1,39 @@
+C51 COMPILER V9.60.0.0   UART                                                              07/30/2019 09:48:34 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE UART
+OBJECT MODULE PLACED IN .\Objects\Uart.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE User\Uart.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\User) DEBUG OBJECTEXTEND P
+                    -RINT(.\Listings\Uart.lst) TABS(2) OBJECT(.\Objects\Uart.obj)
+
+line level    source
+
+   1          #include "Uart.h"
+   2          
+   3          /**
+   4              开启串口定时器，且设置波特率为9600
+   5          **/
+   6          void UartInit()   //9600bps@11.0592MHz
+   7          {
+   8   1          SCON = 0x50; // SCON: 模式1, 8-bit UART, 使能接收
+   9   1          TMOD |= 0x20;
+  10   1          TH1 = 0xfd; //波特率9600 初值
+  11   1          TL1 = 0xfd;
+  12   1          TR1 = 1;
+  13   1          EA = 1; //打开总中断
+  14   1          ES = 1; //打开串口中断
+  15   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     19    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

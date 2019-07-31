@@ -1,0 +1,7 @@
+".\Objects\123.obj",
+".\Objects\delay.obj",
+".\Objects\lcd.obj",
+".\Objects\motor.obj",
+".\Objects\Uart.obj" 
+TO ".\Objects\123" 
+PRINT(".\Listings\123.m51") RAMSIZE(256) 

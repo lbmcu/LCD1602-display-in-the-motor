@@ -1,0 +1,90 @@
+C51 COMPILER V9.60.0.0   DELAY                                                             07/30/2019 09:48:33 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE DELAY
+OBJECT MODULE PLACED IN .\Objects\delay.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE User\delay.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\User) DEBUG OBJECTEXTEND 
+                    -PRINT(.\Listings\delay.lst) TABS(2) OBJECT(.\Objects\delay.obj)
+
+line level    source
+
+   1          #include "delay.h"
+   2          
+   3          
+   4          void Delay(uint i)
+   5          {
+   6   1          uchar x, j;
+   7   1          for(j = 0; j < i; j++)
+   8   1              for(x = 0; x <= 148; x++);
+   9   1      }
+  10          
+  11          //不用，注释掉，防止报错未调用该函数
+  12          /********************************************************************
+  13          * 名称 : Delay()
+  14          * 功能 : 延时,延时时间大概为1毫秒
+  15          * 输入 : 无
+  16          * 输出 : 无
+  17          ***********************************************************************/
+  18          //void Delay_1ms(uint i)
+  19          //{
+  20          //    uint x, j;
+  21          //    for(j = 0; j < i; j++)
+  22          //        for(x = 0; x <= 148; x++);
+  23          //}
+  24          
+  25          
+  26          /********************************************************************
+  27          * 名称 : delay()
+  28          * 功能 : 延时,延时时间大概为140US。
+  29          * 输入 : 无
+  30          * 输出 : 无
+  31          ***********************************************************************/
+  32          
+  33          //不用注释掉，防止报错未调用该函数
+  34          //void Delay2()
+  35          //{
+  36          //    int i, j;
+  37          //    for(i = 0; i <= 10; i++)
+  38          //        for(j = 0; j <= 2; j++)
+  39          //            ;
+  40          //}
+  41          
+  42          ///*******************************************************************************
+  43          //* 函 数 名         : delay
+  44          //* 函数功能       : 延时函数，i=1时，大约延时10us
+  45          //*******************************************************************************/
+  46          //void delay1(uchar i)
+  47          //{
+  48          //    while(i--);
+  49          //}
+  50          
+  51          /* 名称 : delay()
+  52          * 功能 : 延时,延时时间大概为5US。
+  53          * 输入 : 无
+  54          * 输出 : 无
+C51 COMPILER V9.60.0.0   DELAY                                                             07/30/2019 09:48:33 PAGE 2   
+
+  55          ***********************************************************************/
+  56          
+  57          void delay3()
+  58          {
+  59   1          _nop_();
+  60   1          _nop_();
+  61   1          _nop_();
+  62   1          _nop_();
+  63   1          _nop_();
+  64   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     34    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
